@@ -10,16 +10,25 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
+
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-    <main class="wrapper">
+    <main class="wrapper" id="app">
         @include('layouts.navbar')
         @yield('content')
         <!-- Main Footer -->
@@ -54,8 +63,9 @@
     <!-- ChartJS -->
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 
+    
     <!-- PAGE SCRIPTS -->
-    <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
+    {{-- <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script> --}}
     
 </body>
 </html>

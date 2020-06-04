@@ -14,8 +14,18 @@ class CreateNucleosTable extends Migration
     public function up()
     {
         Schema::create('nucleos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('NameNucleo',50);
+            $table->longText('address');
+            $table->boolean('status');
+            $table->string('codePostal',4);
+            $table->string('typeNucleo',2);
+            $table->integer('codSede')->index()->nullable()->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('nucleos', function(Blueprint $table){
+            $table->foreign('codSede')->references('id')->on('nucleos')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +36,10 @@ class CreateNucleosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nucleos');
+        Schema::table('nucleos', function(Blueprint $table){
+            $table-dropForeign('codSede');
+        });
+
+        Schema::drop('nucleos');
     }
 }

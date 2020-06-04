@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('/Nucleo', 'NucleoController');
+Route::group(['middleware' => ['auth']], function () {
 
+    Route::resource('/home', 'Home')->only('index');
+    Route::resource('/Nucleo', 'Maestras\NucleoController')->name('index','Nucleo');  
+    
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
